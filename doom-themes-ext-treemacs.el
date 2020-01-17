@@ -240,19 +240,20 @@ This is used to generate extensions for `treemacs' from `all-the-icons-icon-alis
          :icon (format "  %s\t" (all-the-icons-alltheicon "git" :face 'all-the-icons-red))
          :extensions ("gitignore" "git" "gitconfig" "gitmodules"))
 
-        (dolist (item all-the-icons-icon-alist)
-          (let* ((extensions (doom-themes--get-treemacs-extensions (car item)))
-                 (func (cadr item))
-                 (args (append (list (caddr item)) '(:v-adjust -0.05) (cdddr item)))
-                 (icon (apply func args)))
-            (let* ((icon-pair (cons (format "  %s\t" icon) " "))
-                   (gui-icons (treemacs-theme->gui-icons treemacs--current-theme))
-                   (tui-icons (treemacs-theme->tui-icons treemacs--current-theme))
-                   (gui-icon  (car icon-pair))
-                   (tui-icon  (cdr icon-pair)))
-              (--each extensions
-                (ht-set! gui-icons it gui-icon)
-                (ht-set! tui-icons it tui-icon))))))))
+        ;; (dolist (item all-the-icons-icon-alist)
+        ;;   (let* ((extensions (doom-themes--get-treemacs-extensions (car item)))
+        ;;          (func (cadr item))
+        ;;          (args (append (list (caddr item)) '(:v-adjust -0.05) (cdddr item)))
+        ;;          (icon (apply func args)))
+        ;;     (let* ((icon-pair (cons (format "  %s\t" icon) " "))
+        ;;            (gui-icons (treemacs-theme->gui-icons treemacs--current-theme))
+        ;;            (tui-icons (treemacs-theme->tui-icons treemacs--current-theme))
+        ;;            (gui-icon  (car icon-pair))
+        ;;            (tui-icon  (cdr icon-pair)))
+        ;;       (--each extensions
+        ;;         (ht-set! gui-icons it gui-icon)
+        ;;         (ht-set! tui-icons it tui-icon)))))
+        )))
 
   (treemacs-load-theme doom-themes-treemacs-theme))
 
